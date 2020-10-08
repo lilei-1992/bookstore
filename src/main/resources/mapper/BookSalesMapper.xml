@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yd.dao.BookSalesMapper" >
+  <resultMap id="BaseResultMap" type="com.yd.model.BookSales" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="book_id" property="bookId" jdbcType="INTEGER" />
+    <result column="sales_id" property="salesId" jdbcType="INTEGER" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="prise" property="prise" jdbcType="DOUBLE" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from book_sales
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yd.model.BookSales" >
+    insert into book_sales (id, book_id, sales_id, 
+      quantity, prise, create_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, #{salesId,jdbcType=INTEGER}, 
+      #{quantity,jdbcType=INTEGER}, #{prise,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yd.model.BookSales" >
+    update book_sales
+    set book_id = #{bookId,jdbcType=INTEGER},
+      sales_id = #{salesId,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      prise = #{prise,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, book_id, sales_id, quantity, prise, create_time
+    from book_sales
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, book_id, sales_id, quantity, prise, create_time
+    from book_sales
+  </select>
+</mapper>
