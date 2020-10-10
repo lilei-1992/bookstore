@@ -58,8 +58,8 @@ public class BookController extends BaseController {
         System.out.println("开始");
         System.out.println(request.getContextPath());
         System.out.println(request.getServletContext().getRealPath("/"));
-//        System.out.println(ClassLoader.getSystemClassLoader().getResource(""));
-//        System.out.println(ClassLoader.getSystemClassLoader().getResource("application.yml").getPath());
+        System.out.println(ClassLoader.getSystemClassLoader().getResource(""));
+        System.out.println(ClassLoader.getSystemClassLoader().getResource("application.yml").getPath());
 
     }
 }
